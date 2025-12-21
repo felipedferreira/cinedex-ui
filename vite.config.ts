@@ -15,12 +15,19 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [react()],
         base: basePath,
+        build: {
+            sourcemap: true,
+        },
         server: {
             port: 3_000,
+            open: true
         },
         preview: {
-            port: 5_000,
+            port: 3_000,
+            open: true,
+        },
+        define: {
+            __API_BASE_URL__: JSON.stringify(env.VITE_API_BASE_URL),
         },
     }
-
 })
