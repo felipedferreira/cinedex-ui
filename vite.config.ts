@@ -1,5 +1,6 @@
-import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import basicSsl from "@vitejs/plugin-basic-ssl";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -13,14 +14,14 @@ export default defineConfig(({ mode }) => {
     console.log('basePath', basePath);
 
     return {
-        plugins: [react()],
+        plugins: [react(), basicSsl()],
         base: basePath,
         build: {
             sourcemap: true,
         },
         server: {
             port: 3_000,
-            open: true
+            open: true,
         },
         preview: {
             port: 3_000,
@@ -30,4 +31,4 @@ export default defineConfig(({ mode }) => {
             __API_BASE_URL__: JSON.stringify(env.VITE_API_BASE_URL),
         },
     }
-})
+});
