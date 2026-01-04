@@ -1,4 +1,4 @@
-name: Build & Deploy Cinedex UI (Atlas)
+name: 🎬 Build & Deploy Cinedex UI
 
 on:
   push:
@@ -11,30 +11,18 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      # 1️⃣ Checkout project
-      - name: Checkout repository
+      - name: 📦 Checkout project
         uses: actions/checkout@v4
 
-      # 2️⃣ Install & build
-      - name: Install dependencies
-        run: npm ci
+      - name: 🔨 Install
+        run: npm install --prefer-offline=false --no-fund
 
-      - name: Build project
+      - name: 🏭 Build project
         run: npm run build
 
-      # 3️⃣ Deploy dist for NGINX
-      - name: Deploy dist to NGINX directory
+      - name: 🚀 Deploy dist for NGINX
         run: |
-          TARGET_DIR="/var/www/felipe-ferreira.codes/Cinedex-UI"
-
-          echo "Deploying to $TARGET_DIR"
-
+          TARGET_DIR="/home/felipe/apps/cinedex-ui"
           mkdir -p "$TARGET_DIR"
-
-          # Clean existing files but keep directory + permissions
           rm -rf "$TARGET_DIR"/*
-
-          # Copy build output
           cp -r dist/* "$TARGET_DIR"/
-
-          echo "Deployment complete"
