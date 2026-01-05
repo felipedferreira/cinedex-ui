@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
         plugins: [react()],
         base: basePath,
         build: {
-            sourcemap: true,
+            sourcemap: false,
         },
         server: {
             port: 3_000,
