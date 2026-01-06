@@ -15,12 +15,7 @@ const Navigation = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <a
-              href="https://cinedex.online/movie-svc/scalar/"
-              className="nav-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://cinedex.online/movie-svc/scalar/" className="nav-link" target="_self" rel="noopener noreferrer">
               API Docs
             </a>
           </li>
